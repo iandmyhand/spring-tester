@@ -6,18 +6,11 @@
 		<artifactId>spring-tester-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>study.hard.spring.jasypt</groupId>
-	<artifactId>spring-tester-jasypt</artifactId>
-	<description>
-  	A test project to encrypt properties. 
-  </description>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.jasypt</groupId>
-			<artifactId>jasypt-spring31</artifactId>
-			<version>1.9.2</version>
-		</dependency>
-	</dependencies>
+	<groupId>study.hard.spring.api</groupId>
+	<artifactId>spring-tester-api</artifactId>
 	
+	<description>
+  	A test project to provide API(application program interface) which can be used in the external service.
+	</description>
+
 </project>

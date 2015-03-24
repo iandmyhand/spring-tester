@@ -5,10 +5,36 @@
 	<artifactId>spring-tester-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	
 	<modules>
 		<module>spring-tester-core</module>
-		<module>spring-tester-jasypt</module>
+		<module>spring-tester-api</module>
 	</modules>
+
+	<properties>
+	
+		<java-version>1.7</java-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<source-encoding>UTF-8</source-encoding>
+		<resource-encoding>UTF-8</resource-encoding>
+		
+		<!-- Spring -->
+		<spring.framework.version>4.1.5.RELEASE</spring.framework.version>
+		<spring.batch.version>3.0.3.RELEASE</spring.batch.version>
+		
+		<!-- DB -->
+		<commons-dbcp.version>1.4</commons-dbcp.version>
+		<hsqldb.version>1.8.0.7</hsqldb.version>
+		
+		<!-- Logging -->
+		<slf4j.version>1.7.7</slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
+
+		<!-- Test-->
+		<mockito.version>1.9.0</mockito.version>
+		<junit.version>4.11</junit.version>
+		
+	</properties>
 
 	<dependencyManagement>
 		<dependencies>
