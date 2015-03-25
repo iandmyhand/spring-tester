@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<util:properties id="common" location="classpath:/properties/common.properties" />
+
+	<bean id="environmentVariablesConfiguration" class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
+		<property name="algorithm" value="PBEWithMD5AndDES" />
+	    <property name="passwordEnvName" value="APP_ENCRYPTION_PASSWORD" />
+	</bean>    
+
+	<bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+	    <property name="config" ref="environmentVariablesConfiguration" />
+	    <property name="password" value="$TESTKEY$" />
+	</bean>
+
+	<bean id="propertyConfigurer" class="org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer" >
+	    <constructor-arg ref="configurationEncryptor" />
+	    <property name="fileEncoding" value="UTF-8" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+	    <property name="locations">
+	        <list>
+	            <value>classpath*:/properties/database-common.properties</value>
+				<value>classpath*:/properties/database.properties</value>
+	        </list>
+	    </property>
+	</bean>
+
+</beans>

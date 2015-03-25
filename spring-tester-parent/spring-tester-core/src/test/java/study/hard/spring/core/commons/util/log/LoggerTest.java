@@ -1,4 +1,4 @@
-package study.hard.spring.slf4j;
+package study.hard.spring.core.commons.util.log;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Before;
@@ -7,9 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author SeomGi, Han(iandmyhand@gmail.com)
+ * @author iandmyhand@gmail.com
  */
-public class Slf4jTester {
+public class LoggerTest {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Before

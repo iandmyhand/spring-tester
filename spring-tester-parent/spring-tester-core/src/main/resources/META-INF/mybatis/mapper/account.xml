@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="account">
+
+	<resultMap id="baseResultMap" type="Account">
+		<id column="account_user_key" property="userKey" />
+		<result column="account_email" property="email" />
+		<result column="account_first_name" property="firstName" />
+		<result column="account_last_name" property="lastName" />
+		<result column="account_regist_ymdt" property="registYmdt" />
+	</resultMap>
+
+	<sql id="baseColumnList">
+	<![CDATA[
+		account.user_key		as account_user_key, 
+		account.email		as account_email, 
+		account.first_name		as account_first_name, 
+		account.last_name		as account_last_name, 
+		account.regist_ymdt		as account_regist_ymdt
+	]]>
+	</sql>
+
+	<insert id="insert" parameterType="Account">
+		INSERT /*account.insert*/ INTO account (
+			user_key, 
+			email, 
+			first_name, 
+			last_name, 
+			regist_ymdt
+		)
+		VALUES (
+			#{userKey},
+			#{email},
+			#{firstName},
+			#{lastName},
+			#{registYmdt}
+		)
+	</insert>
+
+	<select id="selectOne" parameterType="String" resultMap="baseResultMap">
+		SELECT /*account.selectOne*/
+			<include refid="baseColumnList" />
+		FROM
+			account
+		<where>
+			AND account.user_key = #{userKey}
+		</where>
+	</select>
+
+	<update id="update" parameterType="Account">
+		UPDATE /*account.update*/ account
+		<set>
+			<if test="userKey != null">account.user_key = #{userKey},</if>
+			<if test="email != null">account.email = #{email},</if>
+			<if test="firstName != null">account.first_name = #{firstName},</if>
+			<if test="lastName != null">account.last_name = #{lastName},</if>
+			<if test="registYmdt != null">account.regist_ymdt = #{registYmdt},</if>
+		</set>
+		<where>
+			AND account.user_key = #{userKey}
+		</where>
+	</update>
+	
+	<delete id="delete" parameterType="String">
+	    DELETE FROM account
+	    <where>
+			AND account.user_key = #{userKey}
+	    </where>
+    </delete>
+	
+</mapper>

@@ -25,6 +25,14 @@
 		<!-- DB -->
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<hsqldb.version>1.8.0.7</hsqldb.version>
+		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis.spring.version>1.2.2</mybatis.spring.version>
+		
+		<!-- encrypt/decrypt properties -->
+		<jasypt.version>1.9.2</jasypt.version>
+		
+		<!-- Util -->
+		<commons.lang.version>2.6</commons.lang.version>
 		
 		<!-- Logging -->
 		<slf4j.version>1.7.7</slf4j.version>
