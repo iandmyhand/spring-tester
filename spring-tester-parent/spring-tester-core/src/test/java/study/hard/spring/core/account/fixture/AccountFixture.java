@@ -6,7 +6,7 @@ import study.hard.spring.core.account.entity.Account;
 
 public class AccountFixture {
 
-	private static final String USER_KEY = "#TESTKEY#";
+	private static final String USER_KEY = "#TESTKEY002#";
 	private static final String EMAIL = "test@test.com";
 	private static final String FIRST_NAME = "Tester";
 	private static final String LAST_NAME = "Spring";
