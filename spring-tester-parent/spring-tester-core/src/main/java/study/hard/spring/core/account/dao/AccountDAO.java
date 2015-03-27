@@ -10,10 +10,10 @@ public interface AccountDAO {
 
 	/**
 	 * 
-	 * @param user
+	 * @param account
 	 * @return
 	 */
-	Account insert(Account user);
+	Account insert(Account account);
 
 	/**
 	 * 
@@ -24,10 +24,10 @@ public interface AccountDAO {
 
 	/**
 	 * 
-	 * @param user
+	 * @param account
 	 * @return
 	 */
-	Integer update(Account user);
+	Integer update(Account account);
 
 	/**
 	 * 

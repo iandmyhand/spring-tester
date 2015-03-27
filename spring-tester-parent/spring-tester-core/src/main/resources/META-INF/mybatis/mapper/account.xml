@@ -50,8 +50,6 @@
 	<update id="update" parameterType="Account">
 		UPDATE /*account.update*/ account
 		<set>
-			<if test="userKey != null">account.user_key = #{userKey},</if>
-			<if test="email != null">account.email = #{email},</if>
 			<if test="firstName != null">account.first_name = #{firstName},</if>
 			<if test="lastName != null">account.last_name = #{lastName},</if>
 			<if test="registYmdt != null">account.regist_ymdt = #{registYmdt},</if>

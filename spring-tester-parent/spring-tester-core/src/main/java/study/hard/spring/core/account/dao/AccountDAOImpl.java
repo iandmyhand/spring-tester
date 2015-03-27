@@ -15,9 +15,9 @@ public class AccountDAOImpl extends NamespaceSqlSessionDaoSupport implements Acc
 	/**
 	 * {@inheritDoc}
 	 */
-	public Account insert(Account user) {
-		getSqlSession().insert(namespace + "insert", user);
-		return user;
+	public Account insert(Account account) {
+		getSqlSession().insert(namespace + "insert", account);
+		return account;
 	}
 
 	/**
@@ -30,8 +30,8 @@ public class AccountDAOImpl extends NamespaceSqlSessionDaoSupport implements Acc
 	/**
 	 * {@inheritDoc}
 	 */
-	public Integer update(Account user) {
-		return getSqlSession().update(namespace + "update", user);
+	public Integer update(Account account) {
+		return getSqlSession().update(namespace + "update", account);
 	}
 
 	/**
