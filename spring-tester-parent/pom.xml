@@ -9,6 +9,7 @@
 	<modules>
 		<module>spring-tester-core</module>
 		<module>spring-tester-api</module>
+		<module>spring-tester-web</module>
 	</modules>
 
 	<properties>
