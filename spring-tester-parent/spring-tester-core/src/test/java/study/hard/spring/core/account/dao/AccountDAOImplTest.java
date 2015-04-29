@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DuplicateKeyException;
 
 import study.hard.spring.core.account.entity.Account;
 import study.hard.spring.core.account.fixture.AccountFixture;
@@ -16,10 +17,16 @@ public class AccountDAOImplTest extends BaseDAOTest<AccountDAOImpl, Account> {
 
 	@Before
 	public void setUp() {
-		Account account = AccountFixture.createEntity();
-		Account insertedAccount = suite.insert(account);
-		logger.debug("insertedAccount: {}", insertedAccount);
-		validateEquals(account, insertedAccount);
+		Account entity = AccountFixture.createEntity();
+		Account insertedEntity = suite.insert(entity);
+		logger.debug("insertedEntity: {}", insertedEntity);
+		validateEquals(entity, insertedEntity);
+	}
+
+	@Test(expected = DuplicateKeyException.class)
+	public void insertWithDuplicateKey() {
+		Account entity = AccountFixture.createEntity();
+		suite.insert(entity);
 	}
 
 	@Test
