@@ -23,20 +23,28 @@ public class AccountDAOImplTest extends BaseDAOTest<AccountDAOImpl, Account> {
 	}
 
 	@Test
-	public void testSelectOne() {
+	public void selectOne() {
 		Account account = suite.selectOne(AccountFixture.getUserKey());
 		logger.debug("account: {}", account);
 		validateIsNotNull(account);
 	}
 
 	@Test
-	public void testUpdate() {
+	public void update() {
 		Account account = suite.selectOne(AccountFixture.getUserKey());
 		account.setFirstName("SOMEONE");
 		account.setLastName("ELSE");
 		account.setRegistYmdt(DateUtils.addDays(account.getRegistYmdt(), -3));
 		Integer updatedCount = suite.update(account);
 		assertTrue(1 == updatedCount);
+		logger.debug("updatedCount: {}", updatedCount);
+	}
+
+	@Test
+	public void delete() {
+		Account account = suite.selectOne(AccountFixture.getUserKey());
+		Integer deletedCount = suite.delete(account.getUserKey());
+		assertTrue(1 == deletedCount);
 	}
 
 	@Override

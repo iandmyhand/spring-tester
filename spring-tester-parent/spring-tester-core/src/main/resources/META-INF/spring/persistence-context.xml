@@ -17,6 +17,19 @@
 		<property name="maxWait" value="${db.maxWait}" />
 		<property name="poolPreparedStatements" value="${db.poolPreparedStatements}" />
 	</bean>
+	
+	<bean id="rdbDataSource" class="study.hard.spring.core.common.db.ManagedBasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}" />
+		<property name="url" value="${rdb.url}" />
+		<property name="username" value="${rdb.username}" />
+		<property name="password" value="${rdb.password}" />
+		<property name="initialSize" value="${rdb.initialSize}" /><!-- The number of initialized Connections when application is loading. -->
+		<property name="maxActive" value="${rdb.maxActive}" /><!-- The maximum number of connections which database pool provides. -->
+		<property name="maxIdle" value="${rdb.maxIdle}" />
+		<property name="minIdle" value="${rdb.minIdle}" />
+		<property name="maxWait" value="${rdb.maxWait}" />
+		<property name="poolPreparedStatements" value="${rdb.poolPreparedStatements}" />
+	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -29,6 +42,23 @@
 					<props>
 						<prop key="defaultExecutorType">REUSE</prop>
 						<prop key="defaultStatementTimeout">${db.queryTimeout}</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="rdbSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="rdbDataSource" />
+		<property name="configLocation" value="classpath:/META-INF/mybatis/config.xml" />
+		<property name="mapperLocations" value="classpath:/META-INF/mybatis/mapper/**/*.xml" />
+		<property name="transactionFactory" ref="transactionFactory" />
+		<property name="configurationProperties">
+			<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+				<property name="properties">
+					<props>
+						<prop key="defaultExecutorType">REUSE</prop>
+						<prop key="defaultStatementTimeout">${rdb.queryTimeout}</prop>
 					</props>
 				</property>
 			</bean>

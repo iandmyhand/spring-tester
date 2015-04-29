@@ -12,5 +12,23 @@
 	<description>
   	A test project to provide API(application program interface) which can be used in the external service.
 	</description>
+		
+	<dependencies>
+	
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
 
 </project>

@@ -9,20 +9,21 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * @author iandmyhand@gmail.com
+ * @param <TYPE> ReadOnly DAO Class
+ * @param <ENTITY> Entity Class
+ */
 @Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/META-INF/spring/test-root-context.xml"})
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-@Transactional
-public abstract class BaseDAOTest<TYPE, ENTITY> extends Assert {
+public abstract class ReadOnlyBaseDAOTest<TYPE, ENTITY> extends Assert {
 
 	@Autowired
 	protected ApplicationContext applicationContext;
 
-	protected TYPE suite;
+	protected TYPE sut;
 
 	protected abstract Class<TYPE> getRepsitoryClass();
 
@@ -31,22 +32,22 @@ public abstract class BaseDAOTest<TYPE, ENTITY> extends Assert {
 	protected abstract void validateEquals(ENTITY target1, ENTITY target2);
 
 	@Before
-	public void initSuite() {
+	public void initSut() {
 		Class<TYPE> clazz = getRepsitoryClass();
 		if (clazz != null) {
-			suite = createAutowiredBean(getRepsitoryClass());
+			sut = createAutowiredBean(getRepsitoryClass());
 		}
 	}
 
 	/**
 	 * @return
 	 */
-	@SuppressWarnings({"unchecked", "hiding"})
-	public <T> T createAutowiredBean(Class<T> clazz) {
+	@SuppressWarnings("unchecked")
+	protected <E> E createAutowiredBean(Class<E> clazz) {
 		if (clazz.isInterface()) {
-			throw new IllegalArgumentException(clazz.getName() + " is interface. Please use implemented Class.");
+			throw new IllegalArgumentException(clazz.getName() + "is Interface. Please use Implement Class.");
 		}
 		AutowireCapableBeanFactory factory = applicationContext.getAutowireCapableBeanFactory();
-		return (T)factory.createBean(clazz, AutowireCapableBeanFactory.AUTOWIRE_BY_NAME, false);
+		return (E)factory.createBean(clazz, AutowireCapableBeanFactory.AUTOWIRE_BY_NAME, false);
 	}
 }

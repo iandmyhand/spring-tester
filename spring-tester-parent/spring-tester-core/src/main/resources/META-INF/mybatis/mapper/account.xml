@@ -20,6 +20,7 @@
 	]]>
 	</sql>
 
+	<!--  -->
 	<insert id="insert" parameterType="Account">
 		INSERT /*account.insert*/ INTO account (
 			user_key, 
@@ -46,6 +47,13 @@
 			AND account.user_key = #{userKey}
 		</where>
 	</select>
+
+	<select id="selectAccountAll" resultMap="baseResultMap">
+		SELECT /*account.selectAccountAll*/
+			<include refid="baseColumnList" />
+		FROM
+			account
+	</select>	
 
 	<update id="update" parameterType="Account">
 		UPDATE /*account.update*/ account
