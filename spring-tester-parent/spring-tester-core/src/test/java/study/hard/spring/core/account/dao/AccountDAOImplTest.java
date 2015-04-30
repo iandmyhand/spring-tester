@@ -37,6 +37,19 @@ public class AccountDAOImplTest extends BaseDAOTest<AccountDAOImpl, Account> {
 	}
 
 	@Test
+	public void selectOneIsExist() {
+		Boolean isExist;
+
+		isExist = suite.selectOneIsExist(AccountFixture.getUserKey());
+		logger.debug("is exist: {}", isExist);
+		assertTrue(isExist);
+
+		isExist = suite.selectOneIsExist("###RANDOM###");
+		logger.debug("is exist: {}", isExist);
+		assertFalse(isExist);
+	}
+
+	@Test
 	public void update() {
 		Account account = suite.selectOne(AccountFixture.getUserKey());
 		account.setFirstName("SOMEONE");

@@ -23,6 +23,13 @@ public class AccountDAOImpl extends NamespaceSqlSessionDaoSupport implements Acc
 	/**
 	 * {@inheritDoc}
 	 */
+	public Boolean selectOneIsExist(String userKey) {
+		return getSqlSession().selectOne(namespace + "selectOneIsExist", userKey);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public Account selectOne(String userKey) {
 		return getSqlSession().selectOne(namespace + "selectOne", userKey);
 	}

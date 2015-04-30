@@ -14,6 +14,9 @@ import study.hard.spring.core.commons.db.ReadOnlyNamespaceSqlSessionDaoSupport;
 @Repository
 public class ReadOnlyAccountDAOImpl extends ReadOnlyNamespaceSqlSessionDaoSupport implements ReadOnlyAccountDAO {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public List<Account> selectAccountAll() {
 		return getSqlSession().selectList(namespace + "selectAccountAll");
 	}

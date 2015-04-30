@@ -17,6 +17,13 @@ public interface AccountDAO {
 
 	/**
 	 * 
+	 * @param string
+	 * @return boolean
+	 */
+	Boolean selectOneIsExist(String string);
+
+	/**
+	 * 
 	 * @param userKey
 	 * @return
 	 */
