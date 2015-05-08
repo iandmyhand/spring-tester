@@ -19,6 +19,9 @@
 		<source-encoding>UTF-8</source-encoding>
 		<resource-encoding>UTF-8</resource-encoding>
 		
+		<!-- Web -->
+		<servlet.version>2.5</servlet.version>
+		
 		<!-- Spring -->
 		<spring.framework.version>4.1.5.RELEASE</spring.framework.version>
 		<spring.batch.version>3.0.3.RELEASE</spring.batch.version>

@@ -6,8 +6,10 @@
 		<artifactId>spring-tester-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>study.hard.spring.core</groupId>
+	
 	<artifactId>spring-tester-core</artifactId>
+	<name>ToastPay Core System</name>
+	<packaging>jar</packaging>
 
 	<description>
   	A test project to provide core logic for other child projects. 
