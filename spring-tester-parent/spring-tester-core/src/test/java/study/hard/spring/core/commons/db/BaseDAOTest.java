@@ -41,7 +41,7 @@ public abstract class BaseDAOTest<TYPE, ENTITY> extends Assert {
 	/**
 	 * @return
 	 */
-	@SuppressWarnings({"unchecked", "hiding"})
+	@SuppressWarnings({"unchecked"})
 	public <T> T createAutowiredBean(Class<T> clazz) {
 		if (clazz.isInterface()) {
 			throw new IllegalArgumentException(clazz.getName() + " is interface. Please use implemented Class.");
